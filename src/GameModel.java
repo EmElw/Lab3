@@ -23,11 +23,25 @@ public interface GameModel {
 //				new GameTile[this.gameboardSize.width][this.gameboardSize.height];
 //	}
 
+    /**
+     * Sets the reference of the given position in the given matrix to the given GameTile
+     * @param pos the position in the matrix to set (can be replaced with two integers)
+     * @param tile the tile to set to
+     * @param matrix the matrix to set in
+     * @throws IndexOutOfBoundsException if position is out of bounds
+     */
     void setGameboardState(Position pos, GameTile tile, GameTile[][] matrix) throws IndexOutOfBoundsException;
 
     void setGameboardState(final int x, final int y,
                            final GameTile tile, GameTile[][] matrix) throws IndexOutOfBoundsException;
 
+    /**
+     * Gets the reference to the GameTile at the given position
+     * @param pos the position to read (can be replaced with two integers)
+     * @param matrix the matrix to read from
+     * @return a GameTile at the given position/matrix
+     * @throws IndexOutOfBoundsException if the position is out of bounds
+     */
     GameTile getGameboardState(final Position pos, GameTile[][] matrix) throws IndexOutOfBoundsException;
 
     GameTile getGameboardState(final int x, final int y, GameTile[][] matrix) throws IndexOutOfBoundsException;
