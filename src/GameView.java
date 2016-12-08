@@ -82,6 +82,7 @@ public class GameView extends JComponent {
 	 * Consults the model to paint the game matrix. If model is null, draws a
 	 * default text.
 	 */
+
 	@Override
 	public void paintComponent(final Graphics g) {
 		// Check if we have a running game
@@ -94,7 +95,7 @@ public class GameView extends JComponent {
 			// Draw all tiles by going over them x-wise and y-wise.
 			for (int i = 0; i < this.modelSize.width; i++) {
 				for (int j = 0; j < this.modelSize.height; j++) {
-					GameTile tile = this.model.getGameboardState(i, j);
+					GameTile tile = this.model.getGameboardState(i, j); // TODO stuff here too
 					tile.draw(g, i * this.tileSize.width, j
 							* this.tileSize.height,
 							this.tileSize);
