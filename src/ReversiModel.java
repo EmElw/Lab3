@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
  * @author evensen
  * 
  */
-public class ReversiModel extends GameModel {
+public class ReversiModel implements GameModel {
 	public enum Direction {
 			EAST(1, 0),
 			SOUTHEAST(1, 1),
@@ -56,6 +56,12 @@ public class ReversiModel extends GameModel {
 			return t == BLACK ? WHITE : BLACK;
 		}
 	}
+
+    /** A Matrix containing the state of the gameboard. */
+    private GameTile[][] gameboardState;
+
+    /** The size of the state matrix. */
+    private final Dimension gameboardSize = Constants.getGameSize();
 
 	/** Graphical representation of a coin. */
 	private static final GameTile blackTile = new RoundTile(Color.BLACK,
@@ -307,6 +313,38 @@ public class ReversiModel extends GameModel {
 		return new Position(this.cursorPos.getX()
 					+ dir.getXDelta(),
 					this.cursorPos.getY() + dir.getYDelta());
+	}
+
+    /**
+     * @inheritdoc
+     */
+	@Override
+	public void setGameboardState(Position pos, GameTile tile) throws IndexOutOfBoundsException {
+		GameUtils.setGameboardState(pos, tile, gameboardState);
+	}
+
+	public void setGameboardState(int x, int y, GameTile tile) throws IndexOutOfBoundsException {
+        GameUtils.setGameboardState(x, y, tile, gameboardState);
+    }
+
+    /**
+     * @inheritdoc
+     */
+	@Override
+	public GameTile getGameboardState(Position pos) throws IndexOutOfBoundsException {
+		return GameUtils.getGameboardState(pos, gameboardState);
+	}
+
+    public GameTile getGameboardState(int x, int y) throws IndexOutOfBoundsException {
+        return GameUtils.getGameboardState(x, y, gameboardState);
+    }
+
+    /**
+     * @inheritdoc
+     */
+	@Override
+	public Dimension getGameboardSize() {
+		return GameUtils.getGameboardSize(gameboardState);
 	}
 
 	/**

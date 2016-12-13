@@ -12,7 +12,7 @@ class GameUtils {
      * @param matrix the matrix to set in
      * @throws IndexOutOfBoundsException if position is out of bounds
      */
-    public void setGameboardState(Position pos, GameTile tile, GameTile[][] matrix) throws IndexOutOfBoundsException {
+    static public void setGameboardState(Position pos, GameTile tile, GameTile[][] matrix) throws IndexOutOfBoundsException {
         matrix[pos.getX()][pos.getY()] = tile;
     }
 
@@ -24,7 +24,7 @@ class GameUtils {
      * @param matrix the matrix to set in
      * @throws IndexOutOfBoundsException if position is out of bounds
      */
-    public void setGameboardState(int x, int y, GameTile tile, GameTile[][] matrix) throws IndexOutOfBoundsException {
+    static public void setGameboardState(int x, int y, GameTile tile, GameTile[][] matrix) throws IndexOutOfBoundsException {
         setGameboardState(new Position(x, y), tile, matrix);
     }
 
@@ -35,7 +35,7 @@ class GameUtils {
      * @return a GameTile at the given position/matrix
      * @throws IndexOutOfBoundsException if the position is out of bounds
      */
-    public GameTile getGameboardState(Position pos, GameTile[][] matrix) {
+    static public GameTile getGameboardState(Position pos, GameTile[][] matrix) {
         return matrix[pos.getX()][pos.getY()];
     }
 
@@ -47,7 +47,7 @@ class GameUtils {
      * @return a GameTile at the given position/matrix
      * @throws IndexOutOfBoundsException if the position is out of bounds
      */
-    public GameTile getGameboardState(int x, int y, GameTile[][] matrix) {
+    static public GameTile getGameboardState(int x, int y, GameTile[][] matrix) {
         return getGameboardState(new Position(x, y), matrix);
     }
 
@@ -56,7 +56,7 @@ class GameUtils {
      * @param matrix the game board
      * @return the size of the game board
      */
-    public Dimension getGameboardSize(GameTile[][] matrix) {
+    static public Dimension getGameboardSize(GameTile[][] matrix) {
         return new Dimension(matrix.length, matrix[0].length);
     }
 }

@@ -25,29 +25,26 @@ public interface GameModel {
 
     /**
      * Sets the reference of the given position in the given matrix to the given GameTile
-     * @param x the x-coordinate in the matrix to set
-     * @param y the y-coordinate in the matrix to set
+     * @param pos the position to set
      * @param tile the tile to set to
      * @throws IndexOutOfBoundsException if position is out of bounds
      */
-    void setGameboardState(final int x, final int y,
+    void setGameboardState(final Position pos,
                            final GameTile tile) throws IndexOutOfBoundsException;
 
     /**
      * Gets the reference to the GameTile at the given position
-     * @param x the x-coordinate to read
-     * @param y the y-coordinate to read
+     * @param pos the position to read
      * @return a GameTile at the given position/matrix
      * @throws IndexOutOfBoundsException if the position is out of bounds
      */
-    GameTile getGameboardState(final int x, final int y) throws IndexOutOfBoundsException;
+    GameTile getGameboardState(final Position pos) throws IndexOutOfBoundsException;
 
     /**
      * Returns the size of the game board
-     * @param matrix the game board
      * @return the size of the game board
      */
-    Dimension getGameboardSize(GameTile[][] matrix);
+    Dimension getGameboardSize();
 
     /**
      * This method is called repeatedly so that the game can update it's state.
