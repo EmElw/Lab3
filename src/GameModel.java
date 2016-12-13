@@ -25,14 +25,6 @@ public interface GameModel {
 
     /**
      * Sets the reference of the given position in the given matrix to the given GameTile
-     * @param pos the position in the matrix to set (can be replaced with two integers)
-     * @param tile the tile to set to
-     * @throws IndexOutOfBoundsException if position is out of bounds
-     */
-    void setGameboardState(Position pos, GameTile tile) throws IndexOutOfBoundsException;
-
-    /**
-     * Sets the reference of the given position in the given matrix to the given GameTile
      * @param x the x-coordinate in the matrix to set
      * @param y the y-coordinate in the matrix to set
      * @param tile the tile to set to
@@ -40,14 +32,6 @@ public interface GameModel {
      */
     void setGameboardState(final int x, final int y,
                            final GameTile tile) throws IndexOutOfBoundsException;
-
-    /**
-     * Gets the reference to the GameTile at the given position
-     * @param pos the position to read (can be replaced with two integers)
-     * @return a GameTile at the given position/matrix
-     * @throws IndexOutOfBoundsException if the position is out of bounds
-     */
-    GameTile getGameboardState(final Position pos) throws IndexOutOfBoundsException;
 
     /**
      * Gets the reference to the GameTile at the given position

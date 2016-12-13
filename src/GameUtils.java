@@ -59,8 +59,4 @@ class GameUtils {
     public Dimension getGameboardSize(GameTile[][] matrix) {
         return new Dimension(matrix.length, matrix[0].length);
     }
-
-
-    public void gameUpdate(int lastKey) throws GameOverException {
-    }
 }
