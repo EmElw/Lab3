@@ -61,7 +61,10 @@ public class ReversiModel implements GameModel {
     private GameTile[][] gameboardState;
 
     /** The size of the state matrix. */
-    private final Dimension gameboardSize = Constants.getGameSize();
+	private final Dimension gameboardSize = Constants.getGameSize();
+
+    /** The size of the state matrix. */
+    //private final Dimension gameboardSize = Constants.getGameSize();
 
 	/** Graphical representation of a coin. */
 	private static final GameTile blackTile = new RoundTile(Color.BLACK,
@@ -145,7 +148,7 @@ public class ReversiModel implements GameModel {
 	 * 
 	 * @throws GameOverException
 	 */
-	private Direction updateDirection(final int key) {
+	private Direction updateDirection(final int key) throws GameOverException {
 		switch (key) {
 			case KeyEvent.VK_LEFT:
 				return Direction.WEST;
@@ -316,35 +319,56 @@ public class ReversiModel implements GameModel {
 	}
 
     /**
-     * @inheritdoc
+     * Gets the reference to the GameTile at the given position
+     * @param pos the position to read
+     * @return a GameTile at the given position/matrix
+     * @throws IndexOutOfBoundsException if the position is out of bounds
      */
 	@Override
 	public void setGameboardState(Position pos, GameTile tile) throws IndexOutOfBoundsException {
 		GameUtils.setGameboardState(pos, tile, gameboardState);
 	}
 
+    /**
+     * Sets the reference of the given position in the given matrix to the given GameTile
+     * @param x the x-coordinate in the matrix to set
+     * @param y the y-coordinate in the matrix to set
+     * @param tile the tile to set to
+     * @throws IndexOutOfBoundsException if position is out of bounds
+     */
 	public void setGameboardState(int x, int y, GameTile tile) throws IndexOutOfBoundsException {
         GameUtils.setGameboardState(x, y, tile, gameboardState);
     }
 
     /**
-     * @inheritdoc
+     * Gets the reference to the GameTile at the given position
+     * @param pos the position to read
+     * @return a GameTile at the given position/matrix
+     * @throws IndexOutOfBoundsException if the position is out of bounds
      */
 	@Override
 	public GameTile getGameboardState(Position pos) throws IndexOutOfBoundsException {
 		return GameUtils.getGameboardState(pos, gameboardState);
 	}
 
+    /**
+     * Gets the reference to the GameTile at the given position
+     * @param x the x-coordinate to read
+     * @param y the y-coordinate to read
+     * @return a GameTile at the given position/matrix
+     * @throws IndexOutOfBoundsException if the position is out of bounds
+     */
     public GameTile getGameboardState(int x, int y) throws IndexOutOfBoundsException {
         return GameUtils.getGameboardState(x, y, gameboardState);
     }
 
     /**
-     * @inheritdoc
+     * Returns the size of the game board
+     * @return the size of the game board
      */
 	@Override
 	public Dimension getGameboardSize() {
-		return GameUtils.getGameboardSize(gameboardState);
+        return gameboardSize;
 	}
 
 	/**
