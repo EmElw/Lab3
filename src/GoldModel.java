@@ -164,7 +164,7 @@ public class GoldModel implements GameModel {
      */
     private boolean isPositionEmpty(final Position pos) {
         GameTile[] blankTileArray = {BLANK_TILE};
-        return (getGameboardState(pos) == blankTileArray);
+        return (getGameboardState(pos)[0] == blankTileArray[0]);
     }
 
     /**
