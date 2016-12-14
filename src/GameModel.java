@@ -23,23 +23,23 @@ public interface GameModel {
 //				new GameTile[this.gameboardSize.width][this.gameboardSize.height];
 //	}
 
-    /**
-     * Sets the reference of the given position in the given matrix to the given GameTile
-     * @param pos the position to set
-     * @param tile the tile to set to
-     * @throws IndexOutOfBoundsException if position is out of bounds
-     */
-    void setGameboardState(final Position pos,
-                           final GameTile tile) throws IndexOutOfBoundsException;
-
-    /**
-     * Sets the reference of the given position in the given matrix to the given GameTile
-     * @param x the x-coordinate in the matrix to set
-     * @param y the y-coordinate in the matrix to set
-     * @param tile the tile to set to
-     * @throws IndexOutOfBoundsException if position is out of bounds
-     */
-    void setGameboardState(int x, int y, GameTile tile) throws IndexOutOfBoundsException;
+//    /**
+//     * Sets the reference of the given position in the given matrix to the given GameTile
+//     * @param pos the position to set
+//     * @param tile the tile to set to
+//     * @throws IndexOutOfBoundsException if position is out of bounds
+//     */
+//    void setGameboardState(final Position pos,
+//                           final GameTile tile) throws IndexOutOfBoundsException;
+//
+//    /**
+//     * Sets the reference of the given position in the given matrix to the given GameTile
+//     * @param x the x-coordinate in the matrix to set
+//     * @param y the y-coordinate in the matrix to set
+//     * @param tile the tile to set to
+//     * @throws IndexOutOfBoundsException if position is out of bounds
+//     */
+//    void setGameboardState(int x, int y, GameTile tile) throws IndexOutOfBoundsException;
 
     /**
      * Gets the reference to the GameTile at the given position
@@ -47,7 +47,7 @@ public interface GameModel {
      * @return a GameTile at the given position/matrix
      * @throws IndexOutOfBoundsException if the position is out of bounds
      */
-    GameTile getGameboardState(final Position pos) throws IndexOutOfBoundsException;
+    GameTile[] getGameboardState(final Position pos) throws IndexOutOfBoundsException;
 
     /**
      * Gets the reference to the GameTile at the given position
@@ -56,7 +56,7 @@ public interface GameModel {
      * @return a GameTile at the given position/matrix
      * @throws IndexOutOfBoundsException if the position is out of bounds
      */
-    GameTile getGameboardState(int x, int y);
+    GameTile[] getGameboardState(int x, int y);
 
     /**
      * Returns the size of the game board
