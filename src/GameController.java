@@ -125,6 +125,10 @@ public class GameController implements Runnable, IObservable {
         //this.updateInterval = 150;
         this.isRunning = true;
         this.gameModel.addObserver(view);
+        try {
+            this.gameModel.addObserver(this.gameModel.createUI());
+        } catch (NullPointerException e) {
+        }
 
 
         // Create the new thread and start it...
