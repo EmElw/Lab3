@@ -418,7 +418,7 @@ public class ReversiModel implements GameModel {
                             Math.min(nextCursorPos.getY(), boardSize.height - 1));
             nextCursorPos = new Position(nextX, nextY);
             this.cursorPos = nextCursorPos;
-            observers.firePropertyChange(new PropertyChangeEvent(this, null, null, null));
+          observers.firePropertyChange(null, null, null);
         } else {
             throw new GameOverException(this.blackScore - this.whiteScore);
         }

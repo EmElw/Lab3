@@ -21,6 +21,7 @@ public class ViewReversiText extends JComponent implements ViewUI {
   @Override
   public void paint(Graphics g) {
     // Draw turn
+    g.drawRect(0, 0, d.width, d.height);
     g.drawString((turn == ReversiModel.Turn.BLACK ? "Black" : "White"),
             20, 25);
 
@@ -39,6 +40,7 @@ public class ViewReversiText extends JComponent implements ViewUI {
       scoreBlack = o.getBlackScore();
       scoreWhite = o.getWhiteScore();
       turn = o.getTurnColor();
+      System.out.printf("Bong! Black: /n \t White: /n\n", scoreBlack, scoreWhite);
       repaint();
     }
   }

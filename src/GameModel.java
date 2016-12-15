@@ -74,7 +74,8 @@ public interface GameModel extends IObservable {
      */
     int getGameUpdateSpeed();
 
-    /**
+
+  /**
      * This method is called repeatedly so that the game can update it's state.
      *
      * @param lastKey The most recent keystroke.
