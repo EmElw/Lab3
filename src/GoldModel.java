@@ -248,6 +248,16 @@ public class GoldModel implements GameModel {
         return 150;
     }
 
+    /**
+     * Returns a UI for the game model
+     *
+     * @return a UI
+     */
+    @Override
+    public ViewUI createUI() {
+        return null;
+    }
+
     private void setGameboardState(Position pos, GameTile tile) {
         setGameboardState(pos.getX(), pos.getY(), tile);
     }
