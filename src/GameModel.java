@@ -6,7 +6,7 @@ import java.awt.Dimension;
  * Constructors of subclasses should initiate matrix elements and additional,
  * game-dependent fields.
  */
-public interface GameModel extends IObservable{
+public interface GameModel extends IObservable {
 
 //	/** A Matrix containing the state of the gameboard. */
 //	private final GameTile[][] gameboardState;
@@ -41,33 +41,42 @@ public interface GameModel extends IObservable{
 //     */
 //    void setGameboardState(int x, int y, GameTile tile) throws IndexOutOfBoundsException;
 
-    /**
-     * Gets the reference to the GameTile at the given position
-     * @param pos the position to read
-     * @return a GameTile at the given position/matrix
-     * @throws IndexOutOfBoundsException if the position is out of bounds
-     */
-    GameTile[] getGameboardState(final Position pos) throws IndexOutOfBoundsException;
+  /**
+   * Gets the reference to the GameTile at the given position
+   *
+   * @param pos the position to read
+   * @return a GameTile at the given position/matrix
+   * @throws IndexOutOfBoundsException if the position is out of bounds
+   */
+  GameTile[] getGameboardState(final Position pos) throws IndexOutOfBoundsException;
 
-    /**
-     * Gets the reference to the GameTile at the given position
-     * @param x the x-coordinate to read
-     * @param y the y-coordinate to read
-     * @return a GameTile at the given position/matrix
-     * @throws IndexOutOfBoundsException if the position is out of bounds
-     */
-    GameTile[] getGameboardState(int x, int y);
+  /**
+   * Gets the reference to the GameTile at the given position
+   *
+   * @param x the x-coordinate to read
+   * @param y the y-coordinate to read
+   * @return a GameTile at the given position/matrix
+   * @throws IndexOutOfBoundsException if the position is out of bounds
+   */
+  GameTile[] getGameboardState(int x, int y);
 
-    /**
-     * Returns the size of the game board
-     * @return the size of the game board
-     */
-    Dimension getGameboardSize();
+  /**
+   * Returns the size of the game board
+   *
+   * @return the size of the game board
+   */
+  Dimension getGameboardSize();
 
-    /**
-     * This method is called repeatedly so that the game can update it's state.
-     *
-     * @param lastKey The most recent keystroke.
-     */
-    void gameUpdate(int lastKey) throws GameOverException;
+  /**
+   * Returns an integer value of milliseconds
+   * @return integer milliseconds T betweene each update
+   */
+  int getGameupdateSpeed();
+
+  /**
+   * This method is called repeatedly so that the game can update it's state.
+   *
+   * @param lastKey The most recent keystroke.
+   */
+  void gameUpdate(int lastKey) throws GameOverException;
 }

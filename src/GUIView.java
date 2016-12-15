@@ -104,6 +104,7 @@ public class GUIView extends JPanel {
 				// new game model
 				GUIView.this.gameController.stopGame();
 				GUIView.this.gameController.startGame(gameModel);
+				GUIView.this.gameView.setModel(gameModel);
 				GUIView.this.gameView.requestFocus();
 			}
 		}
