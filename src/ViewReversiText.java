@@ -6,7 +6,7 @@ import java.beans.PropertyChangeListener;
 /**
  * Created by Magnus on 2016-12-15.
  */
-public class ViewReversiText extends JComponent implements PropertyChangeListener {
+public class ViewReversiText extends JComponent implements ViewUI {
 
   private int scoreBlack;
   private int scoreWhite;
@@ -19,7 +19,7 @@ public class ViewReversiText extends JComponent implements PropertyChangeListene
   }
 
   @Override
-  protected void paintComponent(Graphics g) {
+  public void paint(Graphics g) {
     // Draw turn
     g.drawString((turn == ReversiModel.Turn.BLACK ? "Black" : "White"),
             20, 25);
@@ -34,10 +34,12 @@ public class ViewReversiText extends JComponent implements PropertyChangeListene
 
   @Override
   public void propertyChange(PropertyChangeEvent evt) {
-    ReversiModel o = (ReversiModel) evt.getSource();
-    scoreBlack = o.getBlackScore();
-    scoreWhite = o.getWhiteScore();
-    turn = o.getTurnColor();
-    repaint();
+    if (evt.getPropertyName().equals("ScoreUpdate")) {
+      ReversiModel o = (ReversiModel) evt.getSource();
+      scoreBlack = o.getBlackScore();
+      scoreWhite = o.getWhiteScore();
+      turn = o.getTurnColor();
+      repaint();
+    }
   }
 }
