@@ -167,7 +167,7 @@ public class GameController implements Runnable, IObservable {
         while (this.isRunning) {
             try {
                 // If the game model has an update speed greater than 0 it will get an update at that interval
-                if(this.gameModel.getGameUpdateSpeed() > 0) {
+                if (this.gameModel.getGameUpdateSpeed() > 0) {
                     // Tell model to update, send next key press.
                     // or 0 if no new keypress since last update.
                     this.gameModel.gameUpdate(nextKeyPress());
@@ -177,7 +177,7 @@ public class GameController implements Runnable, IObservable {
                     Thread.sleep(this.gameModel.getGameUpdateSpeed());
                 }
                 // If the game model has an update speed 0 or lower it will be updated when there is a queued input
-                else if(!this.keypresses.isEmpty()){
+                else if (!this.keypresses.isEmpty()) {
                     this.gameModel.gameUpdate(this.nextKeyPress());
                 }
             } catch (GameOverException e) {
