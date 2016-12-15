@@ -41,6 +41,7 @@ public class ViewReversiText extends JComponent implements ViewUI {
       scoreWhite = o.getWhiteScore();
       turn = o.getTurnColor();
       System.out.printf("Bong! Black: /n \t White: /n\n", scoreBlack, scoreWhite);
+      // PLZ WORK
       repaint();
     }
   }
