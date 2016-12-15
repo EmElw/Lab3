@@ -1,4 +1,4 @@
-import java.awt.Dimension;
+import java.awt.*;
 
 /**
  * Common superclass for all game model classes.
@@ -41,42 +41,43 @@ public interface GameModel extends IObservable {
 //     */
 //    void setGameboardState(int x, int y, GameTile tile) throws IndexOutOfBoundsException;
 
-  /**
-   * Gets the reference to the GameTile at the given position
-   *
-   * @param pos the position to read
-   * @return a GameTile at the given position/matrix
-   * @throws IndexOutOfBoundsException if the position is out of bounds
-   */
-  GameTile[] getGameboardState(final Position pos) throws IndexOutOfBoundsException;
+    /**
+     * Gets the reference to the GameTile at the given position
+     *
+     * @param pos the position to read
+     * @return a GameTile at the given position/matrix
+     * @throws IndexOutOfBoundsException if the position is out of bounds
+     */
+    GameTile[] getGameboardState(final Position pos) throws IndexOutOfBoundsException;
 
-  /**
-   * Gets the reference to the GameTile at the given position
-   *
-   * @param x the x-coordinate to read
-   * @param y the y-coordinate to read
-   * @return a GameTile at the given position/matrix
-   * @throws IndexOutOfBoundsException if the position is out of bounds
-   */
-  GameTile[] getGameboardState(int x, int y);
+    /**
+     * Gets the reference to the GameTile at the given position
+     *
+     * @param x the x-coordinate to read
+     * @param y the y-coordinate to read
+     * @return a GameTile at the given position/matrix
+     * @throws IndexOutOfBoundsException if the position is out of bounds
+     */
+    GameTile[] getGameboardState(int x, int y);
 
-  /**
-   * Returns the size of the game board
-   *
-   * @return the size of the game board
-   */
-  Dimension getGameboardSize();
+    /**
+     * Returns the size of the game board
+     *
+     * @return the size of the game board
+     */
+    Dimension getGameboardSize();
 
-  /**
-   * Returns an integer value of milliseconds
-   * @return integer milliseconds T betweene each update
-   */
-  int getGameupdateSpeed();
+    /**
+     * Returns an integer value of milliseconds
+     *
+     * @return integer milliseconds T betweene each update
+     */
+    int getGameUpdateSpeed();
 
-  /**
-   * This method is called repeatedly so that the game can update it's state.
-   *
-   * @param lastKey The most recent keystroke.
-   */
-  void gameUpdate(int lastKey) throws GameOverException;
+    /**
+     * This method is called repeatedly so that the game can update it's state.
+     *
+     * @param lastKey The most recent keystroke.
+     */
+    void gameUpdate(int lastKey) throws GameOverException;
 }

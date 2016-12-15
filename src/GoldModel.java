@@ -86,7 +86,7 @@ public class GoldModel implements GameModel {
      * A list containing the positions of all coins.
      */
     private final List<Position> coins = new ArrayList<>();
-	/*
+    /*
 	 * The declaration and object creation above uses the new language feature
 	 * 'generic types'. It can be declared in the old way like this:
 	 * private java.util.List coins = new ArrayList();
@@ -110,6 +110,9 @@ public class GoldModel implements GameModel {
      */
     private int score;
 
+    /**
+     * The game board.
+     */
     private GameTile[][] gameboardState;
 
     /**
@@ -222,9 +225,7 @@ public class GoldModel implements GameModel {
      */
     @Override
     public GameTile[] getGameboardState(int x, int y) {
-        @SuppressWarnings("Redundant")
-        GameTile[] returnArr = {gameboardState[x][y]};
-        return returnArr;
+        return new GameTile[]{gameboardState[x][y]};
     }
 
     /**
@@ -235,6 +236,16 @@ public class GoldModel implements GameModel {
     @Override
     public Dimension getGameboardSize() {
         return Constants.getGameSize();
+    }
+
+    /**
+     * Returns an integer value of milliseconds
+     *
+     * @return integer milliseconds T between each update
+     */
+    @Override
+    public int getGameUpdateSpeed() {
+        return 150;
     }
 
     private void setGameboardState(Position pos, GameTile tile) {

@@ -30,7 +30,7 @@ public class GameController implements Runnable, IObservable {
     /**
      * The timeout interval between each update. (millis)
      */
-    private final int updateInterval;
+    //private final int updateInterval;
 
     /**
      * True when game is running.
@@ -67,7 +67,6 @@ public class GameController implements Runnable, IObservable {
         this.view = view;
         this.gameModel = null;
         this.isRunning = false;
-        this.updateInterval = 150;
 
         this.keypresses = new LinkedList<>();
 
@@ -110,6 +109,7 @@ public class GameController implements Runnable, IObservable {
      * @param gameModel Game to start
      */
     public void startGame(final GameModel gameModel) {
+
         if (this.isRunning) {
             throw new IllegalStateException("Game is already running");
         }
@@ -122,6 +122,7 @@ public class GameController implements Runnable, IObservable {
 
         // Actually start the game
         this.gameModel = gameModel;
+        //this.updateInterval = 150;
         this.isRunning = true;
         this.gameModel.addObserver(view);
 
@@ -165,13 +166,20 @@ public class GameController implements Runnable, IObservable {
     public void run() {
         while (this.isRunning) {
             try {
-                // Tell model to update, send next key press.
-                // or 0 if no new keypress since last update.
-                this.gameModel.gameUpdate(nextKeyPress());
+                // If the game model has an update speed greater than 0 it will get an update at that interval
+                if(this.gameModel.getGameUpdateSpeed() > 0) {
+                    // Tell model to update, send next key press.
+                    // or 0 if no new keypress since last update.
+                    this.gameModel.gameUpdate(nextKeyPress());
 
 //        observers.firePropertyChange("KeyPress",0,nextKeyPress());
 
-                Thread.sleep(this.updateInterval);
+                    Thread.sleep(this.gameModel.getGameUpdateSpeed());
+                }
+                // If the game model has an update speed 0 or lower it will be updated when there is a queued input
+                else if(!this.keypresses.isEmpty()){
+                    this.gameModel.gameUpdate(this.nextKeyPress());
+                }
             } catch (GameOverException e) {
                 // we got a game over signal, time to exit...
                 // The current implementation ignores the game score
