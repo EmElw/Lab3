@@ -1,3 +1,5 @@
+import org.omg.PortableInterceptor.INACTIVE;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -170,19 +172,20 @@ public class GameController implements Runnable, IObservable {
     public void run() {
         while (this.isRunning) {
             try {
+                int keyPressed = this.nextKeyPress();
                 // If the game model has an update speed greater than 0 it will get an update at that interval
                 if (this.gameModel.getGameUpdateSpeed() > 0) {
                     // Tell model to update, send next key press.
                     // or 0 if no new keypress since last update.
-                    this.gameModel.gameUpdate(nextKeyPress());
+                    this.gameModel.gameUpdate(keyPressed);
 
 //        observers.firePropertyChange("KeyPress",0,nextKeyPress());
 
                     Thread.sleep(this.gameModel.getGameUpdateSpeed());
                 }
                 // If the game model has an update speed 0 or lower it will be updated when there is a queued input
-                else if (!this.keypresses.isEmpty()) {
-                    this.gameModel.gameUpdate(this.nextKeyPress());
+                else if (keyPressed != 0) {
+                    this.gameModel.gameUpdate(keyPressed);
                 }
             } catch (GameOverException e) {
                 // we got a game over signal, time to exit...
